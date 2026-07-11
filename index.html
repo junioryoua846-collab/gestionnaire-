@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestionnaire PERSONNEL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion </title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        input { display: block; width: 100%; margin-bottom: 10px; padding: 10px; }
+        button { width: 100%; padding: 10px; background: #4a90e2; color: white; border: none; }
+        table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="logo-container">
+    <img src="icons8_businessman_40px.png" alt="mon logo" alt="logo" style="width: 200px;">
+    </div>
+    </div>
+    <h2>Ajouter un Employé</h2>
+    <input type="text" id="nom" placeholder="NOM">
+    <input type="text" id="prenom" placeholder="PRENOM">
+    <button onclick="ajouterEmploye()">Enregistrer</button>
+
+    <h3>Liste du personnel</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+            </tr>
+        </thead>
+        <tbody id="corpsTableau">
+            </tbody>
+    </table>
+
+    <script>
+        function ajouterEmploye() {
+            // 1. Récupérer les valeurs
+            let nom = document.getElementById ('nom').value;
+            let prenom = document.getElementById('prenom').value;
+
+            if(nom === "" || prenom === "") {
+                alert("Veuillez remplir tous les champs !");
+                return;
+            }
+
+            // 2. Créer une nouvelle ligne dans le tableau
+            let tbody = document.getElementById('corpsTableau');
+            let ligne = `<tr><td>${nom}</td><td>${prenom}</td></tr>`;
+            
+            tbody.innerHTML += ligne;
+
+            // 3. Vider les champs
+            document.getElementById('nom').value = '';
+            document.getElementById('prenom').value = '';
+        }
+    </script>
+</body>
+</html>
